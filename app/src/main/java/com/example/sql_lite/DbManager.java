@@ -57,4 +57,20 @@ public class DbManager
         }
         return crs;
     }
+
+    public Cursor getAllRecords()
+    {
+        Cursor crs=null;
+        try
+        {
+            SQLiteDatabase db=dbhelper.getReadableDatabase();
+            String sql = "SELECT * FROM " + DatabaseStrings.TBL_NAME;
+            crs = db.rawQuery( sql, null);
+        }
+        catch(SQLiteException sqle)
+        {
+            return null;
+        }
+        return crs;
+    }
 }
